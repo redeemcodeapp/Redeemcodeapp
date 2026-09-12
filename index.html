@@ -224,6 +224,8 @@ button{
 }
 
 .unlock-btn{
+    position:relative;
+    overflow:hidden;
     color:#fff;
     background:linear-gradient(
         135deg,
@@ -232,16 +234,51 @@ button{
         #7c4dff
     );
     box-shadow:
+        0 0 12px rgba(66,133,244,.55),
         0 10px 30px rgba(66,133,244,.30),
         inset 0 1px 0 rgba(255,255,255,.25);
-    transition:.2s;
+    animation:blueGlow 2s ease-in-out infinite;
+}
+
+.unlock-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-80%;
+    width:45%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.55),
+        transparent
+    );
+    transform:skewX(-20deg);
+    animation:shine 2.8s infinite;
+}
+
+@keyframes blueGlow{
+    0%,100%{
+        box-shadow:
+            0 0 10px rgba(66,133,244,.45),
+            0 10px 30px rgba(66,133,244,.30),
+            inset 0 1px 0 rgba(255,255,255,.25);
+    }
+    50%{
+        box-shadow:
+            0 0 28px rgba(66,133,244,.85),
+            0 10px 35px rgba(66,133,244,.45),
+            inset 0 1px 0 rgba(255,255,255,.35);
+    }
+}
+
+@keyframes shine{
+    0%{left:-80%}
+    45%,100%{left:140%}
 }
 
 .unlock-btn:hover{
     transform:translateY(-2px);
-    box-shadow:
-        0 14px 35px rgba(66,133,244,.40),
-        inset 0 1px 0 rgba(255,255,255,.25);
 }
 
 .unlock-btn:active{
@@ -339,10 +376,46 @@ button{
 }
 
 .completed-btn{
+    position:relative;
+    overflow:hidden;
     background:linear-gradient(135deg,#20b978,#15945f);
     color:#fff;
     transition:none !important;
     transform:none !important;
+    box-shadow:
+        0 0 12px rgba(32,185,120,.45),
+        0 8px 25px rgba(21,148,95,.30);
+    animation:greenGlow 2s ease-in-out infinite;
+}
+
+.completed-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-80%;
+    width:45%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.55),
+        transparent
+    );
+    transform:skewX(-20deg);
+    animation:shine 2.8s infinite;
+}
+
+@keyframes greenGlow{
+    0%,100%{
+        box-shadow:
+            0 0 10px rgba(32,185,120,.40),
+            0 8px 25px rgba(21,148,95,.30);
+    }
+    50%{
+        box-shadow:
+            0 0 28px rgba(32,185,120,.80),
+            0 10px 32px rgba(21,148,95,.45);
+    }
 }
 
 .completed-btn:hover,
@@ -350,7 +423,6 @@ button{
 .completed-btn:focus{
     transition:none !important;
     transform:none !important;
-    animation:none !important;
     outline:none;
 }
 
@@ -533,7 +605,6 @@ button{
 
 <body>
 
-<!-- 2 SECOND PROCESSING ANIMATION -->
 <div class="processing" id="processing">
 
     <div class="processing-box">
